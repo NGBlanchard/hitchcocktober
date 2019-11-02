@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import LoginForm from '../../components/LoginForm/LoginForm'
 import LoginNav from '../Nav/LoginNav'
 import './LoginPage.css'
+import ApiService from "../../services/api-service";
+import Context from "../../Context";
 
 export default class LoginPage extends Component {
   static defaultProps = {
@@ -10,6 +12,7 @@ export default class LoginPage extends Component {
       push: () => {},
     },
   }
+  static contextType = Context;
 
   onLoginSuccess = () => {
     const { location, history } = this.props

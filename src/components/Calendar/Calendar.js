@@ -19,6 +19,13 @@ export default class Calendar extends React.Component {
   weekdays = moment.weekdays();
   weekdaysShort = moment.weekdaysShort();
 
+  // componentDidMount() {
+  //   const day = moment().format("D");
+  //   if (this.state.selectedDay === moment().format("D")) {
+  //     this.onDayClick(day);
+  //   }
+  // }
+
   firstDayOfMonth = () => {
     let firstDay = moment()
       .startOf("month")
@@ -36,12 +43,13 @@ export default class Calendar extends React.Component {
     const [film] = this.context.list.filter(
       movie => movie.id === dayData.movie_id
     );
-    film !== undefined ?
-    this.setState({
-      poster: film.poster_path
-    }) : this.setState({
-      poster: ""
-    });
+    film !== undefined
+      ? this.setState({
+          poster: film.poster_path
+        })
+      : this.setState({
+          poster: ""
+        });
     this.setState({ showResults: true });
   };
 

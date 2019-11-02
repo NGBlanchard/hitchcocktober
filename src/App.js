@@ -12,18 +12,29 @@ import About from "./components/About/About";
 import NotFoundPage from "./components/NotFoundPage/NotFoundPage";
 import Context from "./Context";
 import ApiService from "./services/api-service";
+import config from "./config";
+import TokenService from "./services/token-service";
+
+const userId = TokenService.getUserId();
 
 class App extends React.Component {
   state = {
     userData: {},
-    hasError: false
+    hasError: false,
+    error: null
   };
   static contextType = Context;
 
   componentDidMount() {
-    ApiService.getMovies().then(res => this.context.setList(res));
-    ApiService.getUserData().then(res => this.context.setBigObj(res));
-  }
+    ApiService.getUserData()
+    .then(res => this.context.setBigObj(res))
+}
+
+  // componentDidMount() {
+  //   ApiService.getMovies().then(res => this.context.setList(res));
+  //   ApiService.getUserData().then(res => this.context.setBigObj(res));
+
+  // }
 
   render() {
     return (
@@ -51,7 +62,7 @@ class App extends React.Component {
 
               <PrivateRoute path={"/list"} component={List} />
               <PrivateRoute path={"/stats"} component={Stats} />
-              <PublicOnlyRoute path={"/about"} component={About} />
+              <Route path={"/about"} component={About} />
               <Route component={NotFoundPage} />
             </Switch>
           </main>

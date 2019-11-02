@@ -27,10 +27,11 @@ const ApiService = {
       headers: {
         authorization: `bearer ${TokenService.getAuthToken()}`
       }
-    }).then(res =>
+    })
+    .then(res =>
       !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
-    );
-  },
+    )
+},
 
   postLogin({ user_name, password }) {
     return fetch(`${config.API_ENDPOINT}/login`, {

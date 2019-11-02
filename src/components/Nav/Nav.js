@@ -45,8 +45,8 @@ export default class Nav extends React.Component {
           Movies
         </Link>
         {' '}
-        <Link to='/stats'>
-          Stats
+        <Link to='/home'>
+          Home
         </Link>
         {' '}
         <Link to='/about'>

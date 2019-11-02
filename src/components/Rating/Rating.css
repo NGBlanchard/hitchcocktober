@@ -1,0 +1,29 @@
+.rating {
+	color: rgb(69, 69, 69);
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+input[type="checkbox"] + .chex {
+  display: inline-block;
+  position: relative;
+  top: -1px;
+  width: 12px;
+  height: 12px;
+  margin: -1px 0px 0 0;
+  vertical-align: middle;
+  background: white left top no-repeat;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+input[type="checkbox"]:checked + .chex {
+  background: limegreen;
+}
+
+input[type="checkbox"] + .chex {
+  margin-right: 4px;
+}
+.yes {
+	margin: 5px;
+}

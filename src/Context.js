@@ -1,39 +1,7 @@
 import React from "react";
 
 const Context = React.createContext({
-  octDays: [
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "10",
-    "11",
-    "12",
-    "13",
-    "14",
-    "15",
-    "16",
-    "17",
-    "18",
-    "19",
-    "20",
-    "21",
-    "22",
-    "23",
-    "24",
-    "25",
-    "26",
-    "27",
-    "28",
-    "29",
-    "30",
-    "31"
-  ],
+  octDays: [],
   currentDay: null,
   error: null,
   list: [],
@@ -43,46 +11,15 @@ const Context = React.createContext({
   setCurrentDay: () => {},
   setList: () => {},
   setBigObj: () => {},
-  updateBigObj: () => {}
+  updateBigObj: () => {},
+  setOctDays: () => {}
 });
 
 export default Context;
 
 export class ContextProvider extends React.Component {
   state = {
-    octDays: [
-      "1",
-      "2",
-      "3",
-      "4",
-      "5",
-      "6",
-      "7",
-      "8",
-      "9",
-      "10",
-      "11",
-      "12",
-      "13",
-      "14",
-      "15",
-      "16",
-      "17",
-      "18",
-      "19",
-      "20",
-      "21",
-      "22",
-      "23",
-      "24",
-      "25",
-      "26",
-      "27",
-      "28",
-      "29",
-      "30",
-      "31"
-    ],
+    octDays: [],
     currentDay: "",
     list: [],
     bigObj: {},
@@ -90,15 +27,23 @@ export class ContextProvider extends React.Component {
   };
 
   updateBigObj = (patch, movieDay, day) => {
-    const bigObj = Object.assign({}, this.state.bigObj)
+    const bigObj = Object.assign({}, this.state.bigObj);
     bigObj[movieDay] = day;
-    this.setState({ bigObj }, () => console.log(bigObj.oct1.movie))
+    this.setState({ bigObj }, () => null);
   };
 
   setBigObj = data => {
-    this.setState({
-      bigObj: data
-    });
+    this.setState({ bigObj: data }, () => null);
+    // for (let [key, value] of Object.entries(this.state.bigObj)) {
+    //   if (key.includes("oct")) {
+    //     this.setState(
+    //       prevState => ({
+    //         octDays: [...prevState.octDays, value]
+    //       }),
+    //       () => null
+    //     );
+    //   }
+    // }
   };
 
   setList = res => {
@@ -133,7 +78,8 @@ export class ContextProvider extends React.Component {
       setList: this.setList,
       bigObj: this.state.bigObj,
       setBigObj: this.setBigObj,
-      updateBigObj: this.updateBigObj
+      updateBigObj: this.updateBigObj,
+      setOctDays: this.setOctDays
     };
 
     return (
